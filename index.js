@@ -1,12 +1,18 @@
 require("colors");
 
-const principal = ()=>{
+const menu = require("./helpers/menuinquire");
+const listTareas = require("./class/tarea"); 
 
-    console.log('=======================');
-    console.log(`   ToDid ${'Aplication'.brightBlue.underline}`);
-    console.log('=======================');
 
-    console.log('\n 1. Anotar Tarea');
+
+const principal = async()=>{
+    try {
+        const resmenu =  await menu();
+        const lista = new listTareas;
+        console.log(lista.mostrartarea());        
+    } catch (error) {
+        console.log(error);
+    }
 
 
 }
