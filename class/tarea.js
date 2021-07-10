@@ -16,10 +16,10 @@ class tareas {
         this.listadoTareas = {};
     }
 
-mostrartarea(){
-    const item = new tarea;
-    item.descripcion = 'hola si funciona ';
-    console.log(item);
+nuevaTarea(desc){
+    const item = new tarea(desc);
+    this.listadoTareas[item.id] = item;
+    console.log(this.listadoTareas);
 }
 
 }

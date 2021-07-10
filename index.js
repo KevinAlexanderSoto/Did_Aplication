@@ -1,21 +1,35 @@
 require("colors");
 
-const menu = require("./helpers/menuinquire");
-const listTareas = require("./class/tarea"); 
+const { menu , getNewTask} = require("./helpers/menuinquire");
+const listTareas = require("./class/tarea");
 
+const principal = async () => {
+  try {
+    const resmenu = await menu();
+   
+    switch (resmenu) {
+      case "1": // agregar tarea
+      const {description} = await getNewTask();
+      
+      const lista = new listTareas();
+      lista.nuevaTarea(description);
+      break;
 
-
-const principal = async()=>{
-    try {
-        const resmenu =  await menu();
-        const lista = new listTareas;
-        console.log(lista.mostrartarea());        
-    } catch (error) {
-        console.log(error);
+      case "2":// ver tareas
+       
+      break;
+      case "3"://borrar tareas
+       
+      break;
+      case "0":// salir 
+       
+      break;
     }
 
-
-}
-
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 principal();
