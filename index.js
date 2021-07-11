@@ -5,28 +5,33 @@ const listTareas = require("./class/tarea");
 
 const principal = async () => {
   try {
-    const resmenu = await menu();
-   
+    let resmenu;
+    do {
+        
+    resmenu = await menu();
+   const lista = new listTareas();
+
     switch (resmenu) {
       case "1": // agregar tarea
       const {description} = await getNewTask();
       
-      const lista = new listTareas();
+      
       lista.nuevaTarea(description);
+   
       break;
 
       case "2":// ver tareas
-       
+
+      lista.mostrarTareas();
+      
       break;
       case "3"://borrar tareas
        
       break;
-      case "0":// salir 
-       
-      break;
     }
 
-    
+  } while (resmenu != 0);
+
   } catch (error) {
     console.log(error);
   }

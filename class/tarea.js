@@ -1,5 +1,6 @@
 const {v4 : uuidv4} = require('uuid');// para generar un ID unico 
 const moment = require('moment');
+const { saveData, showData } = require('../helpers/DB');
 
 class tarea {
     constructor(desc = ''){
@@ -18,8 +19,17 @@ class tareas {
 
 nuevaTarea(desc){
     const item = new tarea(desc);
-    this.listadoTareas[item.id] = item;
-    console.log(this.listadoTareas);
+
+    const {id,...all} = item; // nuevo de ES9 
+
+    this.listadoTareas[id] = all;
+    saveData(this.listadoTareas);
+}
+
+mostrarTareas(){
+
+     showData(); 
+
 }
 
 }
