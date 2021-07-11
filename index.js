@@ -1,6 +1,6 @@
 require("colors");
 
-const { menu , getNewTask} = require("./helpers/menuinquire");
+const { menu , getNewTask, pausa} = require("./helpers/menuinquire");
 const listTareas = require("./class/tarea");
 
 const principal = async () => {
@@ -15,14 +15,14 @@ const principal = async () => {
       case "1": // agregar tarea
       const {description} = await getNewTask();
       
-      
       lista.nuevaTarea(description);
    
       break;
 
       case "2":// ver tareas
-
+      console.clear();
       lista.mostrarTareas();
+      await pausa();
       
       break;
       case "3"://borrar tareas

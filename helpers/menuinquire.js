@@ -32,10 +32,10 @@ const preguntas =[/* vector de preguntas menu */
   ];
 
 const menu = async()=>{
-
+    console.clear();
     console.log(`${'======================='.brightBlue}`);
     console.log(`   ToDid ${'Aplication'.brightBlue}`);
-    console.log(`${'======================='.brightBlue}`);
+    console.log(`${'======================= \n'.brightBlue}`);
     console.log(moment().format('dddd Do MMMM'));
 
     const {opciones} = await inquerer.prompt(preguntas)
@@ -70,6 +70,17 @@ const getNewTask = async ()=>{
   return description;
 }
 
+const pausa = async ()=>{
+  const {pause} = await inquerer.prompt(
+      [{type : 'cuestion',
+        name : 'pausa',
+        message : `Presione ${'Enter'.green} para Continuar `          
+  
+  }])
+  return pause;
+}
+
 
 module.exports = {menu,
-  getNewTask};
+  getNewTask,
+  pausa};
