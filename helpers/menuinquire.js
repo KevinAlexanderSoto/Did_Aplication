@@ -80,7 +80,40 @@ const pausa = async ()=>{
   return pause;
 }
 
+const menuBorrar = async (tareas = [])=>{ // menu de items a borrar 
+  // lista las tareas en el apartado de borrar
+
+    const choices = tareas.map( (tarea, i) => {
+  
+        const idx = `${i + 1}.`.green;
+  
+        return {
+            value: tarea,
+            name:  `${ idx } ${ tarea.descripcion } : : agregada el ${'DIA '.cyan} :${tarea.fecha}`
+        }
+    });
+  
+    choices.unshift({
+        value: '0',
+        name: '0.'.green + ' Cancelar'
+    });
+  
+    const preguntas = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Borrar',
+            choices
+        }
+    ]
+  
+    const { id } = await inquerer.prompt(preguntas);
+    return id;
+  }
+
 
 module.exports = {menu,
   getNewTask,
-  pausa};
+  pausa,
+  menuBorrar
+};

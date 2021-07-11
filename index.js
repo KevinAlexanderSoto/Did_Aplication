@@ -1,6 +1,6 @@
 require("colors");
 
-const { menu , getNewTask, pausa} = require("./helpers/menuinquire");
+const { menu , getNewTask, pausa, menuBorrar} = require("./helpers/menuinquire");
 const listTareas = require("./class/tarea");
 
 const principal = async () => {
@@ -26,7 +26,9 @@ const principal = async () => {
       
       break;
       case "3"://borrar tareas
-       
+       const array = lista.traerDataFromDB();
+       const dleteID = await menuBorrar(array);
+       await pausa();
       break;
     }
 

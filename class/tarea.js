@@ -9,7 +9,6 @@ class tarea {
     this.descripcion = desc,
     this.fecha = moment().format('dddd Do MMMM') 
     }
-    
 
 }
 
@@ -30,12 +29,33 @@ nuevaTarea(desc){
 mostrarTareas(){
      const dataObj = showData(); 
      let cont = 1;
+     let lastfecha = '';
      for (const property in dataObj) {
-         const {descripcion,fecha} = dataObj[property]; 
-        console.log(`${cont.toString().blue}${')'.blue}  ${descripcion} ${'creada'.green} en : ${fecha}`);
+         const {descripcion,fecha} = dataObj[property];
+
+        (lastfecha != fecha )
+        ?console.log(`${'------------------------------------------------------'.magenta}`) 
+        : false;
+
+        console.log(`${cont.toString().blue}${')'.blue}  ${descripcion} ${'echo'.green} en : ${fecha}`);
         cont++; 
+        lastfecha = fecha;
     } 
       
+
+}
+
+traerDataFromDB(){ // devuelve un array de la data , para luego mandarlo a menuquirer y se graficada para borrar
+
+    const dataObj = showData(); 
+    let array = []; 
+
+     for (const property in dataObj) {
+        
+         array[property] = dataObj[property];
+        
+    } 
+    return array;
 
 }
 
