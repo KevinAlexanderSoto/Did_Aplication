@@ -1,6 +1,7 @@
 {
   "name": "todid",
   "version": "1.0.0",
+  "bin": "index.js",
   "description": "aplication todid , write and control what you did inthe day ",
   "main": "index.js",
   "scripts": {
