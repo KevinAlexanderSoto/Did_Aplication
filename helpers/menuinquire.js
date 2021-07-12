@@ -32,9 +32,9 @@ const preguntas =[/* vector de preguntas menu */
 
 const menu = async()=>{
     console.clear();
-    console.log(`${'======================='.brightBlue}`);
-    console.log(`   ToDid ${'Aplication'.brightBlue}`);
-    console.log(`${'======================= \n'.brightBlue}`);
+    console.log(`${'°°°°°°°°°°°°°°°°°°°°°°°°°°°°°'.brightBlue}`);
+    console.log(`   ${'ToDid'.underline} ${'Aplication'.brightBlue}`);
+    console.log(`${'°°°°°°°°°°°°°°°°°°°°°°°°°°°°° \n'.blue}`);
     console.log( `Hoy es : `+moment().format('dddd Do MMMM'));
   console.log(`${'-------------------------'.yellow}`);
     const {opciones} = await inquerer.prompt(preguntas)
@@ -69,11 +69,11 @@ const getNewTask = async ()=>{
   return description;
 }
 
-const pausa = async ()=>{
+const pausa = async (mensaje)=>{
   const {pause} = await inquerer.prompt(
       [{type : 'cuestion',
         name : 'pausa',
-        message : `Presione ${'Enter'.green} para Continuar `          
+        message : mensaje          
   
   }])
   return pause;
@@ -99,6 +99,7 @@ const menuBorrar = async (tareas = [])=>{ // menu de items a borrar
         {
             type: 'list',
             name: 'id',
+            pageSize: 20,
             message: 'Borrar',
             choices
         }

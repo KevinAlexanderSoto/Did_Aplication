@@ -16,13 +16,13 @@ const principal = async () => {
       const {description} = await getNewTask();
       
       lista.nuevaTarea(description);
-   
+      await pausa(`Se ha agregado ${'CORRECTAMENTE'.green}`);
       break;
 
       case "2":// ver tareas
       console.clear();
       lista.mostrarTareas();
-      await pausa();
+      await pausa(`Presione ${'Enter'.green} para Continuar `);
       
       break;
       case "3"://borrar tareas
@@ -31,7 +31,7 @@ const principal = async () => {
        const deleteID = await menuBorrar(array);
        const ok = await confirmar(`'¿ Desea ${ 'borrar'.red } la ${'tarea'.green }? '`);
        (ok) ? lista.delteData(deleteID) : false
-       await pausa();
+       await pausa(`Presione ${'Enter'.green} para Continuar `);
 
       break;
     }
