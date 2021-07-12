@@ -1,7 +1,7 @@
 const {v4 : uuidv4} = require('uuid');// para generar un ID unico 
 require('colors');
 const moment = require('moment');
-const { saveData, showData } = require('../helpers/DB');
+const { saveData, showData, deleteDataDB } = require('../helpers/DB');
 
 class tarea {
     constructor(desc = ''){
@@ -37,12 +37,11 @@ mostrarTareas(){
         ?console.log(`${'------------------------------------------------------'.magenta}`) 
         : false;
 
-        console.log(`${cont.toString().blue}${')'.blue}  ${descripcion} ${'echo'.green} en : ${fecha}`);
+        console.log(`${cont.toString().blue}${')'.blue}  ${descripcion} ${'echo'.green} el : ${fecha}`);
         cont++; 
         lastfecha = fecha;
     } 
       
-
 }
 
 traerDataFromDB(){ // devuelve un array de la data , para luego mandarlo a menuquirer y se graficada para borrar
@@ -58,7 +57,9 @@ traerDataFromDB(){ // devuelve un array de la data , para luego mandarlo a menuq
     return array;
 
 }
-
+delteData(id){
+    deleteDataDB(id);
+}
 }
 
 module.exports = tareas;

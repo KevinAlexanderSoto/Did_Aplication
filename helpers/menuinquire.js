@@ -2,12 +2,11 @@ require('colors');
 const moment = require('moment');
 const inquerer = require('inquirer');
 
-
 const preguntas =[/* vector de preguntas menu */
     {
       type: "list",
       name: "opciones",
-      message: "que quiere hacer? \n",
+      message: "Registra o borra tus tareas echas en el dia \n",
       loop : true,
       choices: [
         {
@@ -16,7 +15,7 @@ const preguntas =[/* vector de preguntas menu */
         },
         {
           value: "2",
-          name: `${"2.".blue}) Listar tareas del dia`,
+          name: `${"2.".blue}) Listar tareas `,
         },
         {
           value: "3",
@@ -24,7 +23,7 @@ const preguntas =[/* vector de preguntas menu */
         },
         {
           value: "0",
-          name: `${"0.".green}) SALIR`,
+          name: `${"0.".red}) SALIR`,
         }
   
       ]
@@ -36,8 +35,8 @@ const menu = async()=>{
     console.log(`${'======================='.brightBlue}`);
     console.log(`   ToDid ${'Aplication'.brightBlue}`);
     console.log(`${'======================= \n'.brightBlue}`);
-    console.log(moment().format('dddd Do MMMM'));
-
+    console.log( `Hoy es : `+moment().format('dddd Do MMMM'));
+  console.log(`${'-------------------------'.yellow}`);
     const {opciones} = await inquerer.prompt(preguntas)
     
     return opciones
@@ -82,7 +81,6 @@ const pausa = async ()=>{
 
 const menuBorrar = async (tareas = [])=>{ // menu de items a borrar 
   // lista las tareas en el apartado de borrar
-
     const choices = tareas.map( (tarea, i) => {
   
         const idx = `${i + 1}.`.green;
@@ -92,7 +90,6 @@ const menuBorrar = async (tareas = [])=>{ // menu de items a borrar
             name:  `${ idx } ${ tarea.descripcion } : : agregada el ${'DIA '.cyan} :${tarea.fecha}`
         }
     });
-  
     choices.unshift({
         value: '0',
         name: '0.'.green + ' Cancelar'
@@ -106,14 +103,26 @@ const menuBorrar = async (tareas = [])=>{ // menu de items a borrar
             choices
         }
     ]
-  
     const { id } = await inquerer.prompt(preguntas);
-    return id;
+    return id.id;
   }
+  const confirmar = async(message) => {// confirmacion para borrar tareas
 
+    const question = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ];
+  
+    const { ok } = await inquerer.prompt(question);
+    return ok;
+  } 
 
 module.exports = {menu,
   getNewTask,
   pausa,
-  menuBorrar
+  menuBorrar,
+  confirmar
 };
