@@ -37,7 +37,7 @@ mostrarTareas(){
         ?console.log(`${'------------------------------------------------------'.magenta}`) 
         : false;
 
-        console.log(`${cont.toString().blue}${')'.blue}  ${descripcion} ${'echo'.green} el : ${fecha}`);
+        console.log(`${cont.toString().blue}${')'.blue}  ${descripcion} ${'hecho'.green} el : ${fecha}`);
         cont++; 
         lastfecha = fecha;
     } 
