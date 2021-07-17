@@ -6,12 +6,12 @@ const preguntas =[/* vector de preguntas menu */
     {
       type: "list",
       name: "opciones",
-      message: "Registra o borra tus tareas echas en el dia \n",
+      message: "Registra o borra tus tareas hechas en el dia \n",
       loop : true,
       choices: [
         {
           value: "1",
-          name: `${"1.".blue}) registrar tarea`,
+          name: `${"1.".blue}) Registrar tarea`,
         },
         {
           value: "2",
@@ -48,7 +48,7 @@ const getNewTask = async ()=>{
   const description = await inquerer.prompt({ 
     type : 'input',
     name : 'description',
-    message : 'Ingrese la Tarea',
+    message : 'Ingrese la Descripción',
     validate: function (input) {
       // Declare function as asynchronous, and save the done callback
       var done = this.async();
